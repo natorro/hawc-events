@@ -1,2 +1,2 @@
 # hawc-events
-A project trying to explore HAWC experiment simulated events to categorize them
+A project trying to explore HAWC experiment synthetic events to categorize them

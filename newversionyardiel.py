@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-file = "/Users/natorro/Desktop/programming/yardiel_projects/hawc/datasets/hawc_data/hawc_crudos200k.csv"
+file = "/home/natorro/hawc-events/datasets/hawc_data/hawc_crudos200k.csv"
 import csv
 archivo = open(file)
 csvreader = csv.reader(archivo)

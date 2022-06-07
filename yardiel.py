@@ -18,21 +18,36 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.models import load_model
 
+# se carga la libreria de tensorflow
+import tensorflow.compat.v1 as tf
 
+# se carga el aditamento para seleccionar el gpu
+import os
+
+os.environ ['CUDA_VISIBLE_DEVICES'] = '0'
+
+#escoger porcentage de memorya en gpu para ser usada
+#config.gpu_options.per_process_gpu_memory_fraction=0.9
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+
+# despues de la configuracion validar, se inicia la sesion
+sess = tf.Session (config = config)
 import time
 start_time = time.time()
 
 
 
 
-archivo = "/Users/natorro/Desktop/programming/yardiel_projects/hawc/datasets/hawc_data/hawc_crudos10k.csv"
+archivo = "/home/natorro/hawc-events-main/hawc_crudos200k.csv"
 
 archivo = open(archivo)
 csvreader = csv.reader(archivo)
 
 vec=[]
-for i in range(1000):
-    next(csvreader)
+
+next(csvreader)
+for i in range(160000):
     vec.append(next(csvreader))
 
 
@@ -47,7 +62,7 @@ for i in vec:
 clase[0]
 
 salida = []
-for i in range(1000):
+for i in range(160000):
     salida.append([])
     salida[i].append(clase[i])
 
@@ -73,15 +88,15 @@ salidas = np.array(salida, "float32")
 
 model = models.Sequential()
 model.add(layers.Dense(300, activation = 'sigmoid', input_shape = (300, )))
-model.add(layers.Dense(300, activation = 'sigmoid'))
+model.add(layers.Dense(300, activation = 'relu'))
 model.add(layers.Dense(300, activation = 'sigmoid'))
 model.add(layers.Dense(100, activation = 'sigmoid'))
 model.add(layers.Dense(1, activation = 'sigmoid'))
 
-model.compile(optimizer = optimizers.RMSprop(learning_rate = 0.001), 
+model.compile(optimizer = optimizers.RMSprop(learning_rate = 0.01), 
               loss = losses.binary_crossentropy, 
               metrics = [metrics.binary_accuracy])
-model.fit(entrada, salidas, epochs = 250)
+model.fit(entrada, salidas, epochs = 200)
 
 
 

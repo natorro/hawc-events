@@ -82,23 +82,23 @@ salidas = np.array(salidas, "float32")
 
 model = models.Sequential()
 model.add(layers.Dense(300, activation = 'sigmoid', input_shape = (300, )))
-model.add(layers.Dense(300, activation = 'sigmoid'))
+model.add(layers.Dense(300, activation = 'relu'))
 model.add(layers.Dense(300, activation = 'sigmoid'))
 model.add(layers.Dense(100, activation = 'sigmoid'))
 model.add(layers.Dense(1, activation = 'sigmoid'))
 
-model.compile(optimizer = optimizers.RMSprop(learning_rate = 0.001), 
+model.compile(optimizer = optimizers.RMSprop(learning_rate = 0.01), 
               loss = losses.binary_crossentropy, 
               metrics = [metrics.binary_accuracy])
 
-model.fit(entrada, salidas, epochs = 1000)
+model.fit(entrada, salidas, epochs = 200)
 
 
 model.save('modelodia1.h5')
 
 
 from keras.models import load_model
-model1=load_model('modelodia1.h5')
+model1=load_model('modelodia2-relu.h5')
 
 entradaRed
 pred1=model1.predict_on_batch(entradaRed)

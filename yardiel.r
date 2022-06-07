@@ -1,10 +1,10 @@
 #install.packages("keras", dependencies = TRUE)
 library(keras)
 
-rawData <- read.csv("/Users/natorro/Desktop/programming/yardiel_projects/hawc/datasets/hawc_data/hawc_crudos200k.csv")
+rawData <- read.csv("/Users/natorro/Desktop/programming/yardiel_projects/hawc-events/datasets/hawc_data/hawc_crudos200k.csv")
 
 rawData<- subset(rawData, select = -c(evento))
-indexes <- sample(1:200000, 40000)
+indexes <- sample(1:200000, 160000)
 randomSampleData <- rawData[indexes, ]
 leftData <- rawData[-indexes, ]
 

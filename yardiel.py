@@ -39,7 +39,7 @@ start_time = time.time()
 
 
 
-archivo = "/home/natorro/hawc-events-main/hawc_crudos200k.csv"
+archivo = "/Users/natorro/Desktop/programming/yardiel_projects/hawc-events/datasets/hawc_data/hawc_crudos200k.csv"
 
 archivo = open(archivo)
 csvreader = csv.reader(archivo)

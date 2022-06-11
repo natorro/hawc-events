@@ -48,5 +48,5 @@ network %>% compile(
 network %>% fit(train_evs, train_class, epochs = 200)
 
 save_model_hdf5(network, 
-                filepath = "/Users/natorro/Desktop/programming/yardiel_projects/hawc/fivelayers2.hf5")
+                filepath = "/Users/natorro/Desktop/programming/yardiel_projects/hawc-events/fivelayers2.hf5")
       
